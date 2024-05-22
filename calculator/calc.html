@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+</head>
+<style>
+  body , .jumbotron {padding: 30px}
+  .text-giant {font-size:40px}
+</style>
+<body onmousemove="calculator()">
+ 
+  <div class="jumbotron">
+    <h2>VANILLAS CALCULATOR</h2>
+    <form>
+ 
+    <div class="form-group">
+      <label for="price">Price</label>
+      <input  type="number" class="form-control" id="p" name="price" placeholder="price" value="20" oninput="calculator()">
+    </div>
+<div class="form-group">
+      <label for="quantity">Quantity</label>
+        <input type="number" class="form-control"  id="q" name="price" placeholder="price" value="20" oninput="calculator()"> 
+    </div>
+  </form>
+ <div class="total" id="result">
+  <!-- <h2 >$ <span id="result"> </span></h2> -->
+
+</div>
+  </div>
+ 
+ 
+  <script>
+    function calculator(){
+        const price = document.getElementById('p').value;
+        const quantity =document.getElementById('q').value;
+        //const total =document.getElementById(result).value;
+
+
+
+        const total =price * quantity;
+
+        document.getElementById('result').textContent = `$${total}`;
+
+
+        }
+        const input1 = document.getElementById('p');
+        const input2 = document.getElementById('q');
+  
+
+      input1.addEventListener('input', calculator);
+      input2.addEventListener('input', calculator);
+
+      calculator();
+
+    
+
+ 
+ 
+  </script>
+ 
+</body>
+</html>
