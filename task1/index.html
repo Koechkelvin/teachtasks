@@ -189,3 +189,125 @@
 
 </body>
 </html>
+
+
+// Global array to store cart items
+let cart = [];
+
+/**
+ * Add a product to the cart
+ * @param {object} product - The product object to add to the cart
+ */
+function addToCart(product) {
+    const cartItem = cart.find(item => item.id === product.id);
+    if (cartItem) {
+        cartItem.quantity += 1;
+    } else {
+        cart.push({ ...product, quantity: 1 });
+    }
+    updateCartUI();
+}
+
+/**
+ * Delete a product from the cart
+ * @param {number} productId - The ID of the product to delete from the cart
+ */
+function deleteProductFromCart(productId) {
+    cart = cart.filter(item => item.id !== productId);
+    updateCartUI();
+}
+
+/**
+ * Increase the quantity of a product in the cart
+ * @param {number} productId - The ID of the product to increase the quantity of
+ */
+function increaseProductQuantity(productId) {
+    const cartItem = cart.find(item => item.id === productId);
+    if (cartItem) {
+        cartItem.quantity += 1;
+        updateCartUI();
+    }
+}
+
+/**
+ * Reduce the quantity of a product in the cart
+ * @param {number} productId - The ID of the product to reduce the quantity of
+ */
+function reduceProductQuantity(productId) {
+    const cartItem = cart.find(item => item.id === productId);
+    if (cartItem) {
+        cartItem.quantity -= 1;
+        if (cartItem.quantity <= 0) {
+            deleteProductFromCart(productId);
+        } else {
+            updateCartUI();
+        }
+    }
+}
+
+/**
+ * Edit a product in the cart
+ * @param {number} productId - The ID of the product to edit in the cart
+ * @param {number} newQuantity - The new quantity of the product
+ */
+function editProductInCart(productId, newQuantity) {
+    const cartItem = cart.find(item => item.id === productId);
+    if (cartItem) {
+        cartItem.quantity = newQuantity;
+        if (newQuantity <= 0) {
+            deleteProductFromCart(productId);
+        } else {
+            updateCartUI();
+        }
+    }
+}
+
+/**
+ * Function to update the cart UI
+ */
+function updateCartUI() {
+    const cartContainer = document.getElementById('cart-container');
+    cartContainer.innerHTML = ''; // Clear any existing content
+
+    cart.forEach(item => {
+        const cartItemDiv = document.createElement('div');
+        cartItemDiv.className = 'cart-item';
+
+        const title = document.createElement('h2');
+        title.textContent = item.title;
+
+        const quantity = document.createElement('p');
+        quantity.textContent = `Quantity: ${item.quantity}`;
+
+        const price = document.createElement('p');
+        price.textContent = `Price: $${item.price}`;
+
+        // Append elements to the cart item div
+        cartItemDiv.appendChild(title);
+        cartItemDiv.appendChild(quantity);
+        cartItemDiv.appendChild(price);
+
+        // Append the cart item div to the container
+        cartContainer.appendChild(cartItemDiv);
+    });
+
+    // Update the total price
+    const totalPrice = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+    const totalPriceDiv = document.createElement('div');
+    totalPriceDiv.className = 'total-price';
+    totalPriceDiv.textContent = `Total Price: $${totalPrice}`;
+    cartContainer.appendChild(totalPriceDiv);
+}
+
+// Example usage: Adding a product to the cart
+const exampleProduct = {
+    "id": 1,
+    "imageUrl": "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+    "title": "Summer Music Festival",
+    "price": 50,
+    "date": "August 20, 2021",
+    "location": "Central Park, New York City",
+    "company": "Music Festivals Inc."
+};
+
+addToCart(exampleProduct);
