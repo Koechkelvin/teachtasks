@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <style>
+      body{
+        background-image: url('./download.jpg');
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+      .weather-cards{
+        display: flex;
+        gap: 30px;
+      }
+      .cards{
+        background-color: azure;
+        box-shadow: 40 20px hsl(22, 44px, 150px);
+        background-color: blanchedalmond;
+      }
+    </style>
+    <h1>WeatherForecast </h1>
+    <div class="container">
+      <div class="weather-input">
+        <h3>Enter a City </Nameh3>
+        <input class="city-input" type="text" placeholder="Enter a city">
+        <button class="search-btn">Search</button>
+        <button class="location-btn"></button>
+      </div>
+    </div>
+    <div class="weather-data">
+      <div class="current-weather">
+          <div class="details">
+            <h2>City ( Today )</h2>
+            <h6>Temperature: __°C</h6>
+            
+          </div>
+        </div>
+    </div>
+    <h2 class="days">5-Day Forecast</h2>
+         <div class="days-forecast">
+
+          <ul class="weather-cards">
+            <li class="card">
+              <h3>(Date )</h3>
+              <h6>Temp: __C</h6>
+              
+            </li>
+            
+            <li class="card">
+              <h3>( Date)</h3>
+              <h6>Temp: __C</h6>
+              
+            </li>
+            <li class="card">
+              <h3>( Date )</h3>
+              <h6>Temp: __C</h6>
+              
+            </li>
+            <li class="card">
+              <h3>(Date)</h3>
+              <h6>Temp: __C</h6>
+              >
+            </li>
+            <li class="card">
+              <h3>( Date )</h3>
+              <h6>Temp: __C</h6>
+              
+            </li>
+          </ul>
+        </div> 
+  
+  
+    
+  </body>
+</html>
