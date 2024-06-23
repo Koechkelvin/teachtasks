@@ -1,4 +1,3 @@
-// src/components/BookList.jsx
 import React, { useEffect, useState } from 'react';
 import * as BooksAPI from '../APIbooks';
 

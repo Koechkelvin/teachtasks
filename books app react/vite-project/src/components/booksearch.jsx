@@ -1,4 +1,3 @@
-// src/components/BookSearch.jsx
 import React, { useState } from 'react';
 import * as BooksAPI from '../APIbooks';
 
@@ -25,7 +24,7 @@ const BookSearch = () => {
         type="text"
         value={query}
         onChange={handleSearch}
-        placeholder="Search by title or author"
+        placeholder="look for title or author"
       />
       <ul>
         {results.map((book) => (
